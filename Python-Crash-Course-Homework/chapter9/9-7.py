@@ -1,26 +1,21 @@
 # coding:utf-8
 
+class User:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.greet_user()
 
-class Restaurant:
-    # 创建一个饭馆的类
-    def __init__(self, restaurant_name, cuisine_type):
-        self.restaurant_name = restaurant_name.title()
-        self.cuisine_type = cuisine_type
+    def describe_user(self):
+        print(f"姓名：{self.first_name}{self.last_name}")
 
-    def describe_restaurant(self):
-        msg = self.restaurant_name + " serves wonderful " + self.cuisine_type + "."
-        print("\n" + msg)
-
-    def open_restaurant(self):
-        msg = self.restaurant_name + " is open. Come on in!"
-        print("\n" + msg)
+    def greet_user(self):
+        print(f"你好，{self.first_name}{self.last_name}")
 
 
-mean_queen = Restaurant('the mean queen', 'pizza')
-mean_queen.describe_restaurant()
 
-ludvigs = Restaurant("ludvig's bistro", 'seafood')
-ludvigs.describe_restaurant()
 
-mango_thai = Restaurant('mango thai', 'thai food')
-mango_thai.describe_restaurant()
+
+class Admin(User):
+    def __init__(self):
+        super(Admin, self).__init__()
