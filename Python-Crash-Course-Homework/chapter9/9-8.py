@@ -1,7 +1,6 @@
 # coding:utf-8
 
 class User:
-
     def __init__(self, first_name, last_name, username, email, location):
         # 初始化用户
         self.first_name = first_name.title()
@@ -20,24 +19,33 @@ class User:
         print("\nWelcome back, " + self.username + "!")
 
 
+class Privileges:
+    def __init__(self, privileges=[]):
+        self.privileges = privileges
+
+    def show_privileges(self):
+        print("\nPrivileges:")
+        if self.privileges:
+            for privilege in self.privileges:
+                print("-" + privilege)
+        else:
+            print("- This user has no privileges.")
+
+
 class Admin(User):
     def __init__(self, first_name, last_name, username, email, location):
         super().__init__(first_name, last_name, username, email, location)
-        self.privileges = []
-
-    def show_privileges(self):
-        for privilege in self.privileges:
-            print("-" + privilege)
+        self.privileges = Privileges()
 
 
 eric = Admin('eric', 'matthes', 'e_matthes', 'e_matthes@example.com', 'alaska')
 eric.describe_user()
 
-eric.privileges = [
+eric_privileges = [
     'can reset passwords',
     'can moderate discussions',
-    'can suspend accounts',
+    'can suspend accounts'
 ]
-eric.last_name = "WWW"
+eric.privileges.privileges = eric_privileges
 
-eric.show_privileges()
+eric.privileges.show_privileges()
