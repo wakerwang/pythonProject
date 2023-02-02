@@ -24,6 +24,7 @@ def binary_search(list, left, right, finalVal):
         res = []
         # 向左查找
         tmp = mid - 1
+        print("向左查找")
         while True:
             if tmp < 0 or list[tmp] != finalVal:
                 break
@@ -33,7 +34,6 @@ def binary_search(list, left, right, finalVal):
         print("向右查找")
         tmp = mid
         while True:
-            print(tmp)
             if tmp > len(list) - 1 or list[tmp] != finalVal:
                 break
             res.append(tmp)
@@ -43,6 +43,6 @@ def binary_search(list, left, right, finalVal):
 
 
 ll = [1, 8, 10, 89, 1000, 1000, 1234]
-res = binary_search(ll, 0, 6, 1000)
+res = binary_search(ll, 0, 6, 89)
 for num in res:
     print(num)
