@@ -2,16 +2,31 @@
 
 import json
 
-filename = 'username.json'
-try:
-    with open(filename) as f:
-        username = json.load(f)
-except FileNotFoundError:
-    username = input("What's your name?")
+
+def get_stored_username(filename):
+    """如果存储了名字，拿出来"""
+    try:
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        return None
+    else:
+        return username
+
+
+def get_new_username(filename):
+    username = input("请输入用户名称:")
     with open(filename, 'w') as f:
         json.dump(username, f)
-        print(f"We'll remember you when you come back,{username}")
+        print(f"用户名称为：{username}")
 
-else:
-    print(f"Welcome back,{username}")
 
+def greet_user(filename):
+    username = get_stored_username(filename)
+    if username:
+        print(f"{username}")
+    else:
+        get_new_username(filename)
+
+
+greet_user("username_02.json")
