@@ -10,14 +10,14 @@ import json
 
 def input_number(filename):
     try:
-        with open(filename, 'w') as f:
-            number = input("请输入一个你喜欢的数字:")
-            json.dump(number, f)
+        with open(filename) as f:
+            number = json.load(f)
     except FileNotFoundError:
-        print("文件不存在：")
+        print("文件不存在")
+        number = input("请输入一个你喜欢的数字:")
         with open(filename, 'w') as f:
-            number = input("请输入一个你喜欢的数字:")
             json.dump(number, f)
+        print("Thanks, I'll remember that")
     else:
         print(f"您输入的数字是{number}")
 
@@ -34,4 +34,4 @@ def output_number(filename):
 
 filename = "num.json"
 input_number(filename)
-output_number(filename)
+# output_number(filename)
