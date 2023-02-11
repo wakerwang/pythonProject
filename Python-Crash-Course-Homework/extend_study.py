@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding:utf-8 -*-
 
 class Car:
     def __init__(self, make, model, year):
